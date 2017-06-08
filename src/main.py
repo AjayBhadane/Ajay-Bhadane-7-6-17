@@ -25,7 +25,7 @@ class Cache:
     def run(self):
         keep_running = True
         while keep_running:
-            choice = input('\nOptions are "Create", "Read", "Update", "Delete", "Exit" \nEnter your choice:')
+            choice = input('\nOptions are "Create", "Read", "Update", "Delete", "Exit", ""Size \nEnter your choice:')
 
             if choice == 'Create':
                 _id = int(input("Enter id:"))
@@ -58,6 +58,10 @@ class Cache:
                 self.upload_to_file()
                 keep_running = False
 
+            elif choice == 'Size':
+
+                print(len(self.data))
+
             else:
                 print("Invalid choice!")
 
@@ -74,9 +78,8 @@ class Cache:
             for i in range(0, len(self.data)):
                 if self.data[i]['visits_paid'] == _min:
                     self.remove_element(self.data[i]['id'])
+                    self.__add_element(_id, name, math_marks, science_marks)
                     break
-
-        print(len(self.data))
 
     def __add_element(self, _id, name, math_marks, science_marks):
         try:
@@ -91,7 +94,7 @@ class Cache:
             print('invalid input')
 
     def read_element(self, _id):
-
+        self.visit_paid += 1
         for i in range(0, len(self.data)):
             if self.data[i]['id'] == _id:
                 self.data[i]['visits_paid'] = int(self.visit_paid)
@@ -101,11 +104,10 @@ class Cache:
         raise KeyError("No such id")
 
     def update_element(self, _id, name, math_marks, science_marks):
+        self.visit_paid += 1
         for i in range(0, len(self.data)):
             if self.data[i]['id'] == _id:
-                self.data[i]['name'] = name
-                self.data[i]['math_marks'] = math_marks
-                self.data[i]['science_marks'] = science_marks
+                self.__add_element(_id, name, math_marks, science_marks)
                 self.data[i]['visits_paid'] = self.visit_paid
                 return
 
@@ -114,7 +116,6 @@ class Cache:
     def remove_element(self, _id):
         for i in range(0, len(self.data)):
             if self.data[i]['id'] == _id:
-                print(self.data[i])
                 del self.data[i]
                 return
 
