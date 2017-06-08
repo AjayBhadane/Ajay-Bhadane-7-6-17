@@ -10,10 +10,9 @@ All the above stated procedure is done at runtime
     
 Where data is stored
 ===    
-Offline the data is stored in a '.xml' file.
+Offline the data is stored in the `data.xml` file.
 And it is loaded into the data structure when Cache class is instantiated.
-For successful loading of data into the data structure the data file must be in the same directory as the file
-containing the Cache file.
+For successful loading of data into the data structure the data file must be in the same directory where `Cache.py` file is located.
     
 How to use the class
 ===    
