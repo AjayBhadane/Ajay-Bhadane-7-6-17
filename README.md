@@ -19,6 +19,9 @@ How to use the class
 ===    
     Here is an implementation of the class.
     
+    1.This will run the cache.run() which is a CLI to add data to the file.
+    2.Upon entering exit all the data will be stored back to the 'data.xml' file
+    
     ```
     def main():
         cache = Cache()
