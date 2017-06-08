@@ -6,10 +6,10 @@ class Cache:
 
     def __init__(self):
         self.data = []
-        self.load_from_file()
+        self.__load_from_file()
         self.visit_paid = 0
 
-    def load_from_file(self):
+    def __load_from_file(self):
         all_students = ElementTree.parse('data.xml').findall('student')
 
         for student in all_students:
