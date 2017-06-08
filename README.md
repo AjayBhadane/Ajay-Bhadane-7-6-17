@@ -20,8 +20,8 @@ How to use the class
 Here is an implementation of the class.
 ---
     
-1.This will run the cache.run() which is a CLI to add data to the file.
-2.Upon entering `Exit` all the data will be stored back to the `data.xml` file in a sorted manner.
+1. This will run the cache.run() which is a CLI to add data to the file. 
+2. Upon entering `Exit` all the data will be stored back to the `data.xml` file in a sorted manner.
 
 ```
 def main():
