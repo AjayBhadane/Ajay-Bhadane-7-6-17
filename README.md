@@ -31,6 +31,50 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+Here is another way to use it
+---
+
+1. The Cache class has all the CRUD methods
+2. Methods-->
+    
+    run() : Runs the CLI to interact with database
+    
+    `create_element(id,name,math_marks,science_marks)`: Creates a new element in the cache and stores the passes values 
+    into the cache.If the the list size exceeds 20 elements the least accessed element is deleted and new element is 
+    added at the end of the list.
+      
+    `read_element(id)`: Returns the element with the given id back.
+    
+    `update_element(id, name, math_marks, science_marks)` : Updates the element with the passed id with the passed data. 
+     
+    `remove_element(id)` : Removes the element with the given id.
+    
+    `upload_to_file()` : Sorts the cache according to the total of marks and stores the result back to file.
+     
+     Here is an example:
+     ---             
+     ````
+     def main():
+        cache = Cache() #Make new Cache object 
+        student = cache.read_element(1) #Get the element with id=1
+        print(student['id'], student['name'], student['math_marks'], student['science_marks']) #Print the details of 
+        students
+         
+        cache.update_element(1, 'Ajay', 85, 97) #Update the element with id=1 with passed values
+        student = cache.read_element(1) #Fetch new values
+        print(student['id'], student['name'], student['math_marks'], student['science_marks']) #Print new values
+        
+        cache.remove_element(5)
+        cache.upload_to_file()
+        
+    if __name__ == "__main__":
+        main()
+     ````
+   
+
+How the data is sorted
+===
+Data is sorted as the total of the marks of both the subjects arranged in ascending order.
     
     
     
