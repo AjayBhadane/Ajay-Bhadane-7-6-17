@@ -2,7 +2,7 @@ from xml.etree import ElementTree
 
 
 class Cache:
-    max_capacity = 8
+    max_capacity = 20
 
     def __init__(self):
         self.data = []
