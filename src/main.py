@@ -2,7 +2,7 @@ from xml.etree import ElementTree
 
 
 class Cache:
-    max_capacity = 20
+    max_capacity = 8
 
     def __init__(self):
         self.data = []
@@ -62,7 +62,7 @@ class Cache:
                 print("Invalid choice!")
 
     def create_element(self, _id, name, math_marks, science_marks):
-        if len(self.data) < 20:
+        if len(self.data) < self.max_capacity:
             self.__add_element(_id, name, math_marks, science_marks)
         else:
             foo = []
@@ -73,16 +73,22 @@ class Cache:
 
             for i in range(0, len(self.data)):
                 if self.data[i]['visits_paid'] == _min:
-                    self.remove_element(self.data[i])
+                    self.remove_element(self.data[i]['id'])
                     break
 
+        print(len(self.data))
+
     def __add_element(self, _id, name, math_marks, science_marks):
-        self.data.append({
-            'id': _id,
-            'name': name,
-            'math_marks': math_marks,
-            'science_marks': science_marks,
-        })
+        try:
+            self.data.append({
+                'id': _id,
+                'name': name,
+                'math_marks': math_marks,
+                'science_marks': science_marks,
+                'visits_paid': 0
+            })
+        except ValueError:
+            print('invalid input')
 
     def read_element(self, _id):
 
