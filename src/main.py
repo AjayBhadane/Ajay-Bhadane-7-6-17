@@ -124,11 +124,35 @@ class Cache:
     def upload_to_file(self):
         root = ElementTree.Element('students')
 
+        self.__sort()
+
         for student in self.data:
             ElementTree.SubElement(root, "student", id=str(student['id']), name=student['name'],
                                    math_marks=str(student['math_marks']), science_marks=str(student['science_marks']))
 
         ElementTree.ElementTree(root).write("data.xml")
+
+    def __sort(self):
+        foo = []
+        for student in self.data:
+            foo.append(student['math_marks'] + student['science_marks'])
+
+        foo.sort()
+        print(foo)
+        self.__get_sorted_data(foo)
+
+    def __get_sorted_data(self, foo):
+
+        sorted_data = []
+
+        for i in range(0, len(self.data)):
+            for student in self.data:
+                if foo[i] == (student['math_marks'] + student['science_marks']):
+                    sorted_data.append(student)
+                    break
+
+        self.data = sorted_data
+
 
 
 def main():
